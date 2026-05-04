@@ -14,3 +14,13 @@ export async function decryptEdge(session: string | undefined = "") {
     return null;
   }
 }
+
+export async function verifyAdminToken(token: string | undefined): Promise<boolean> {
+  if (!token) return false;
+  try {
+    const { payload } = await jwtVerify(token, encodedKey, { algorithms: ["HS256"] });
+    return payload.isAdmin === true;
+  } catch {
+    return false;
+  }
+}
