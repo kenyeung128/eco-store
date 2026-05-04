@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // nested subproject — has its own lint config
+    "eco-store/**",
   ]),
 ]);
 
